@@ -13,7 +13,7 @@
 const toSpotify = {
   client_id: 'e968b2a38dd44043b74b91126fce5126',
   response_type: 'token',
-  redirect_uri: 'http://localhost:8080/redirect',
+  redirect_uri: 'https://nodespotify.herokuapp.com/redirect.html',
   scope: ['user-read-private', 'user-read-email', 'user-top-read'].join(' ')
 };
 
