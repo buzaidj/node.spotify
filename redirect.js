@@ -126,7 +126,7 @@ function get_neighbors(access_token, id, max_depth, curr_depth = 1, is_last = tr
     },
     tryCount: 0,
     retryLimit: 3,
-    async: false,
+    async: true,
     success: function (response) {
       response.artists.map(x => x.id).filter(x => x != id).forEach(
         function (new_id, idx, arr) {
@@ -191,7 +191,7 @@ function get_top_artists(access_token, n_artists) {
     headers: {
       "Authorization": "Bearer " + access_token
     },
-    async: true,
+    async: false,
     success: function (response) {
       response.items.map(x => x.id).forEach(
         x => artistIdSet.add(x)
