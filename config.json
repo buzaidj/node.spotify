@@ -1,0 +1,10 @@
+{
+  "client_id": "e968b2a38dd44043b74b91126fce5126",
+  "response_type": "token",
+  "redirect_uri": "http://localhost:80",
+  "scope": [
+    "user-read-private",
+    "user-read-email",
+    "user-top-read"
+  ]
+}
