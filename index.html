@@ -4,11 +4,69 @@
 <head>
 </head>
 
+<style>
+html{
+    width: 100%;
+    height: 100%;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    background: rgb(50,39,222);
+    background: linear-gradient(29deg, rgba(50,39,222,1) 0%, rgba(147,49,172,0.41825392266281514) 100%); 
+}
+
+div.outer {
+  display: table;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+div.middle {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+div.center {
+  margin: auto;
+  width: 70%;
+  background-color: rgb(255, 255, 255, 0.5);
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.3);
+  padding: 2vh;
+  text-align: center;
+  border-radius: 4vh;
+}
+
+img {
+    max-width: 70%;
+    max-height: 50%;
+}
+
+h2 {
+  font-size: 5vh;
+}
+
+div.text {
+  width: 40%;
+  font-size: 2vh;
+  margin: auto;
+  text-align: center;
+}
+
+
+</style>
 
 <body>
-  <h1>My First Heading</h1>
-  <p>My first paragraph.</p>
-  <button id="login">Login to Spotify here</button>
+  <div class = "outer">
+  <div class = "middle">
+  <div class = "center">
+  <img src="sample_graph.png">
+  <h2>Graph your Spotify listening</h2>
+  <p class="text">Login to graph your data below. Nodes of the graph represent each artist in your top 50 artists of the past six months. An edge from artist a1 to artist a2 means a2 is in a1's similar artists. See how you listen.</p>
+  <button id="login">Login</button>
+  </div>
+  </div>
+  </div>
 </body>
 
 
@@ -16,14 +74,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="auth.js">
 </script>
-
-<script>
-  $(document).ready(function () {
-    $("button").click(function () {
-      $("p").hide();
-    });
-  });
-</script>
-
 
 </html>

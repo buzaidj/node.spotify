@@ -26,7 +26,7 @@ function make_force_graph() {
     .graphData(graph)
     .nodeRelSize(80)
     .d3Force('collide', d3.forceCollide(function (d) {
-      return d.id === "j" ? 100 : 30
+      return 30
     }))
     .linkDirectionalArrowLength(10);;
 }
@@ -109,7 +109,7 @@ var id_count = 0
 
 function get_neighbors(access_token, id, max_depth, curr_depth = 1, is_last = true, source_id = "") {
   // console.log(id_count);
-  if (id_count >= 1000) {
+  if (id_count >= 3000) {
     return;
   }
   if (curr_depth >= max_depth) {
@@ -126,7 +126,7 @@ function get_neighbors(access_token, id, max_depth, curr_depth = 1, is_last = tr
       "Authorization": "Bearer " + access_token
     },
     tryCount: 0,
-    retryLimit: 3,
+    retryLimit: 1,
     async: true,
     success: function (response) {
       response.artists.map(x => x.id).filter(x => x != id).forEach(
@@ -197,12 +197,12 @@ function get_top_artists(access_token, n_artists) {
       response.items.map(x => x.id).forEach(
         x => artistIdSet.add(x)
       );
-      graph.nodes = graph.nodes.concat(response.items.map(x => {
+      graph.nodes = graph.nodes.concat(response.items.map((x, i) => {
         return {
-          name: x.name,
+          name: i + ": " + x.name,
           id: x.id,
           img: x.images.length > 0 ? x.images[x.images.length - 1] : "",
-          popularity: x.popularity
+          popularity: x.popularity,
         }
       }));
       Array.from(artistIdSet).forEach(
@@ -225,7 +225,7 @@ $(document).ready(function () {
     const access_token = params.get("access_token");
     const token_type = params.get("token_type");
     console.log(access_token);
-    get_top_artists(access_token, 30);
+    get_top_artists(access_token, 50);
   }
 
   else {
