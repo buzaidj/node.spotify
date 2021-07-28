@@ -199,7 +199,7 @@ function get_top_artists(access_token, n_artists) {
       );
       graph.nodes = graph.nodes.concat(response.items.map((x, i) => {
         return {
-          name: i + ": " + x.name,
+          name: i + ". " + x.name,
           id: x.id,
           img: x.images.length > 0 ? x.images[x.images.length - 1] : "",
           popularity: x.popularity,
