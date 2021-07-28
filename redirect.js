@@ -16,11 +16,11 @@ function make_force_graph() {
   var myGraph = ForceGraph();
   myGraph(document.getElementById('graph'))
     .nodeCanvasObject(({ img, x, y }, ctx) => {
-      const size = 30;
+      var size = 30;
       ctx.drawImage(img, x - size / 2, y - size / 2, size, size);
     })
     .nodePointerAreaPaint((node, color, ctx) => {
-      const size = 30;
+      var size = 30;
       ctx.fillStyle = color;
       ctx.fillRect(node.x - size / 2, node.y - size / 2, size, size); // draw square as pointer trap
     })
