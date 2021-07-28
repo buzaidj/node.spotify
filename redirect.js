@@ -25,7 +25,7 @@ function make_force_graph() {
       ctx.fillStyle = color;
       ctx.fillRect(node.x - size / 2, node.y - size / 2, size, size); // draw square as pointer trap
     })
-    .graphData(graph)
+    .graphData(JSON.parse(JSON.stringify(graph)))
     .nodeRelSize(80)
     .d3Force('collide', d3.forceCollide(function (d) {
       return 30
