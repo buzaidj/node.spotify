@@ -12,6 +12,7 @@ function make_force_graph() {
     myImage.src = x.img.url;
     x.img = myImage
   })
+  console.log(graph);
   console.log("Modified the images around a bit haha");
   var myGraph = ForceGraph();
   myGraph(document.getElementById('graph'))
