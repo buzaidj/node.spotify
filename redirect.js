@@ -12,9 +12,6 @@ function make_force_graph() {
     myImage.src = x.img.url;
     x.img = myImage
   })
-  console.log(graph);
-  console.log("Modified the images around a bit haha");
-  console.log(JSON.parse(JSON.stringify(graph)));
   var myGraph = ForceGraph();
   myGraph(document.getElementById('graph'))
     .nodeCanvasObject(({ img, x, y }, ctx) => {
@@ -35,7 +32,6 @@ function make_force_graph() {
 }
 
 function make_graph() {
-  console.log("Time to make graph");
   var elements = graph.nodes.map(x => { return { data: { id: x.id } }; }).concat(graph.links.map(x => {
     return {
       data: {
@@ -46,8 +42,6 @@ function make_graph() {
     };
   }));
   document.getElementById('pp').innerHTML = "HELLO!";
-  console.log("Heres the elements");
-  console.log(elements);
   var cy = cytoscape({
     container: document.getElementById('cy'), // container to render in
     elements: elements,
@@ -118,7 +112,6 @@ function get_neighbors(access_token, id, max_depth, curr_depth, is_last, source_
     return;
   }
   if (visited.has(id)) {
-    console.log("been here!");
     return;
   }
   visited.add(id);
@@ -202,7 +195,7 @@ function get_top_artists(access_token, n_artists) {
       );
       graph.nodes = graph.nodes.concat(response.items.map((x, i) => {
         return {
-          name: i + ". " + x.name,
+          name: (i + 1) + ". " + x.name,
           id: x.id,
           img: x.images.length > 0 ? x.images[x.images.length - 1] : "",
           popularity: x.popularity,
@@ -214,7 +207,6 @@ function get_top_artists(access_token, n_artists) {
         }
       );
       graph.links = Array.from(link_hash.entries());
-      console.log(graph);
     },
     error: function (err) {
       console.error(err);
@@ -227,7 +219,6 @@ $(document).ready(function () {
   if (params.has("access_token") && params.has("token_type")) {
     const access_token = params.get("access_token");
     const token_type = params.get("token_type");
-    console.log(access_token);
     get_top_artists(access_token, 50);
   }
 
