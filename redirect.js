@@ -6,7 +6,7 @@ var graph = {
   links: []
 };
 
-function make_force_graph() {
+async function make_force_graph() {
   graph.nodes.forEach(x => {
     var myImage = new Image(160, 160);
     myImage.src = x.img.url;
@@ -99,7 +99,6 @@ function make_graph() {
     motionBlurOpacity: 0.2,
     wheelSensitivity: 1,
     pixelRatio: 'auto',
-
   });
 }
 
@@ -146,7 +145,7 @@ function get_neighbors(access_token, id, max_depth, curr_depth = 1, is_last = tr
           }
 
           if (idx == arr.length - 1 && curr_depth == max_depth - 1 && is_last) {
-            make_force_graph();
+            await make_force_graph();
           }
           var last_one = (idx == arr.length - 1 && is_last)
           get_neighbors(access_token, new_id, max_depth, curr_depth + 1, last_one, source_id);
@@ -226,6 +225,7 @@ $(document).ready(function () {
     const token_type = params.get("token_type");
     console.log(access_token);
     get_top_artists(access_token, 50);
+    await make_force_graph();
   }
 
   else {
