@@ -6,7 +6,7 @@ var graph = {
   links: []
 };
 
-async function make_force_graph() {
+function make_force_graph() {
   graph.nodes.forEach(x => {
     var myImage = new Image(160, 160);
     myImage.src = x.img.url;
@@ -225,7 +225,6 @@ $(document).ready(function () {
     const token_type = params.get("token_type");
     console.log(access_token);
     get_top_artists(access_token, 50);
-    make_force_graph();
   }
 
   else {
