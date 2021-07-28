@@ -139,6 +139,7 @@ function get_neighbors(access_token, id, max_depth, curr_depth, is_last, source_
           id_count += 1;
           const myID = id_count;
           if (idx_s > 0 && idx_t > 0) {
+            console.log("source_id " + source_id);
             graph.links.push({
               id: myID,
               source: source_id,
