@@ -125,8 +125,8 @@ function get_neighbors(access_token, id, max_depth, curr_depth = 1, is_last = tr
       "Authorization": "Bearer " + access_token
     },
     tryCount: 0,
-    retryLimit: 1,
-    async: true,
+    retryLimit: 3,
+    async: false,
     success: function (response) {
       response.artists.map(x => x.id).filter(x => x != id).forEach(
         function (new_id, idx, arr) {
