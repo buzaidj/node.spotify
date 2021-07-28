@@ -108,7 +108,7 @@ link_hash = new Map();
 
 var id_count = 0
 
-function get_neighbors(access_token, id, max_depth, curr_depth = 1, is_last = true, source_id = "") {
+function get_neighbors(access_token, id, max_depth, curr_depth, is_last, source_id) {
   // console.log(id_count);
   if (id_count >= 3000) {
     return;
@@ -135,6 +135,7 @@ function get_neighbors(access_token, id, max_depth, curr_depth = 1, is_last = tr
           // const new_dist = (new_id in graph.links) ? Math.min(link_hash[new_id].dist, curr_depth) : curr_depth;
           var idx_s = graph.nodes.map(x => x.id).indexOf(id);
           var idx_t = graph.nodes.map(x => x.id).indexOf(new_id);
+          var source_id = id;
           id_count += 1;
           const myID = id_count;
           if (idx_s > 0 && idx_t > 0) {
