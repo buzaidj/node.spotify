@@ -183,7 +183,7 @@ function get_top_artists(access_token, n_artists) {
     // crossDomain: true,
     data: {
       limit: String(n_artists),
-      offset: "1"
+      offset: "0"
     },
     headers: {
       "Authorization": "Bearer " + access_token
@@ -219,7 +219,7 @@ $(document).ready(function () {
   if (params.has("access_token") && params.has("token_type")) {
     const access_token = params.get("access_token");
     const token_type = params.get("token_type");
-    get_top_artists(access_token, 50);
+    get_top_artists(access_token, 20);
   }
 
   else {
